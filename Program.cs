@@ -36,67 +36,83 @@ while (true)
     switch (choice)
     {
         case MenuOption.ViewBooks:
-            AnsiConsole.MarkupLine("[yellow]List of Books:[/]");
-
-            foreach (var book in books)
-            {
-                AnsiConsole.MarkupLine($"- [cyan]{book}[/]");
-            }
-
-            AnsiConsole.MarkupLine("Press Any Key to Continue.");
-            Console.ReadKey();
+            ViewBooks();
             break;
 
         case MenuOption.AddBook:
-            var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of the book to add:");
-
-            // checking if the book already exists to avoid duplication.
-            if (books.Contains(title))
-            {
-                AnsiConsole.MarkupLine($"[red]This book already exists.[/]");
-            }
-            else
-            {
-                books.Add(title);
-                AnsiConsole.MarkupLine($"[green]Book added successfully![/]");
-            }
-
-            AnsiConsole.MarkupLine("Press Any Key to Continue.");
-            Console.ReadKey();
+            AddBook();
             break;
 
         case MenuOption.DeleteBook:
 
-            // checking if there are any books to delete and letting the user know
-            if (books.Count == 0)
-            {
-                AnsiConsole.MarkupLine("[red]No books available to delete.[/]");
-                Console.ReadKey();
-                return;
-            }
-
-            //showing a list of books and letting the user choose with arrows using SelectionPrompt
-            var bookToDelete = AnsiConsole.Prompt(
-                new SelectionPrompt<string>()
-                .Title("Select a [red]book[/] to delete:")
-                .AddChoices(books));
-
-            //Using the Remove method to delete a book. 
-            if (books.Remove(bookToDelete))
-            {
-                AnsiConsole.MarkupLine("[red]Book deleted successfully![/]");
-            }
-            else
-            {
-                AnsiConsole.MarkupLine("[red]Book not found.[/]");
-            }
-
-            AnsiConsole.MarkupLine("Press Any Key to Continue.");
-            Console.ReadKey();
+            DeleteBook();
             break;
     }
 
 }
+
+void ViewBooks()
+{
+    AnsiConsole.MarkupLine("[yellow]List of Books:[/]");
+
+    foreach (var book in books)
+    {
+        AnsiConsole.MarkupLine($"- [cyan]{book}[/]");
+    }
+
+    AnsiConsole.MarkupLine("Press Any Key to Continue.");
+    Console.ReadKey();
+}
+
+void AddBook()
+{
+    var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of the book to add:");
+
+    // checking if the book already exists to avoid duplication.
+    if (books.Contains(title))
+    {
+        AnsiConsole.MarkupLine($"[red]This book already exists.[/]");
+    }
+    else
+    {
+        books.Add(title);
+        AnsiConsole.MarkupLine($"[green]Book added successfully![/]");
+    }
+
+    AnsiConsole.MarkupLine("Press Any Key to Continue.");
+    Console.ReadKey();
+}
+
+void DeleteBook()
+{
+    // checking if there are any books to delete and letting the user know
+    if (books.Count == 0)
+    {
+        AnsiConsole.MarkupLine("[red]No books available to delete.[/]");
+        Console.ReadKey();
+        return;
+    }
+
+    //showing a list of books and letting the user choose with arrows using SelectionPrompt
+    var bookToDelete = AnsiConsole.Prompt(
+        new SelectionPrompt<string>()
+        .Title("Select a [red]book[/] to delete:")
+        .AddChoices(books));
+
+    //Using the Remove method to delete a book. 
+    if (books.Remove(bookToDelete))
+    {
+        AnsiConsole.MarkupLine("[red]Book deleted successfully![/]");
+    }
+    else
+    {
+        AnsiConsole.MarkupLine("[red]Book not found.[/]");
+    }
+
+    AnsiConsole.MarkupLine("Press Any Key to Continue.");
+    Console.ReadKey();
+}
+
 enum MenuOption
 {
     ViewBooks,
