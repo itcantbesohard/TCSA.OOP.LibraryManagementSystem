@@ -29,13 +29,13 @@ while (true)
     Console.Clear();
 
     var choice = AnsiConsole.Prompt(
-      new SelectionPrompt<string>()
+      new SelectionPrompt<MenuOption>()
       .Title("What do you want to do next?")
-      .AddChoices(menuChoices));
+      .AddChoices(Enum.GetValues<MenuOption>()));
 
     switch (choice)
     {
-        case "View Books":
+        case MenuOption.ViewBooks:
             AnsiConsole.MarkupLine("[yellow]List of Books:[/]");
 
             foreach (var book in books)
@@ -47,7 +47,7 @@ while (true)
             Console.ReadKey();
             break;
 
-        case "Add Book":
+        case MenuOption.AddBook:
             var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of the book to add:");
 
             // checking if the book already exists to avoid duplication.
@@ -65,7 +65,7 @@ while (true)
             Console.ReadKey();
             break;
 
-        case "Delete Book":
+        case MenuOption.DeleteBook:
 
             // checking if there are any books to delete and letting the user know
             if (books.Count == 0)
@@ -95,4 +95,11 @@ while (true)
             Console.ReadKey();
             break;
     }
+
+}
+enum MenuOption
+{
+    ViewBooks,
+    AddBook,
+    DeleteBook
 }
