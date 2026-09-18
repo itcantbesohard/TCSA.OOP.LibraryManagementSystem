@@ -7,8 +7,11 @@ namespace TCSA.OOP.LibraryManagementSystem
 {
     internal class UserInterface
     {
-        internal static void MainMenu()
+        private BooksController booksController = new BooksController();
+
+        internal void MainMenu()
         {
+            
             while (true)
             {
                 Console.Clear();
@@ -21,16 +24,16 @@ namespace TCSA.OOP.LibraryManagementSystem
                 switch (choice)
                 {
                     case Enums.MenuOption.ViewBooks:
-                        BooksController.ViewBooks();
+                        booksController.ViewBooks();
                         break;
 
                     case Enums.MenuOption.AddBook:
-                        BooksController.AddBook();
+                        booksController.AddBook();
                         break;
 
                     case Enums.MenuOption.DeleteBook:
 
-                        BooksController.DeleteBook();
+                        booksController.DeleteBook();
                         break;
                 }
 
