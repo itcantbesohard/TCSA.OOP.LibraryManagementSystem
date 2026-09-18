@@ -1,7 +1,10 @@
 ﻿namespace TCSA.OOP.LibraryManagementSystem;
+using Spectre.Console;
+using System;
+
 internal class BooksController
 {
-    var books = new List<string>()
+    private static List<string> books = new List<string>()
     {
     "The Great Gatsby",
     "To Kill a Mockingbird",
