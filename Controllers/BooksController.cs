@@ -1,8 +1,7 @@
-﻿namespace TCSA.OOP.LibraryManagementSystem;
+﻿namespace TCSA.OOP.LibraryManagementSystem.Controllers;
 
 using Spectre.Console;
 using System;
-using TCSA.OOP.LibraryManagementSystem.Controllers;
 using TCSA.OOP.LibraryManagementSystem.Models;
 
 internal class BooksController : IBaseController
