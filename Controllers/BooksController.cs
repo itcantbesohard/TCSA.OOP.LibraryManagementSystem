@@ -7,7 +7,7 @@ using TCSA.OOP.LibraryManagementSystem.Models;
 internal class BooksController : IBaseController
 {
 
-    public void ViewBooks()
+    public void ViewItems()
     {
         var table = new Table();
         table.Border(TableBorder.Rounded);
@@ -38,7 +38,7 @@ internal class BooksController : IBaseController
             Console.ReadKey();
     }
 
-    public void AddBook()
+    public void AddItem()
     {
         var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of the book to add:");
         var author = AnsiConsole.Ask<string>("Enter the [green]author[/] of the book:");
@@ -62,7 +62,7 @@ internal class BooksController : IBaseController
         Console.ReadKey();
     }
 
-    public void DeleteBook()
+    public void DeleteItem()
     {
         // checking if there are any books to delete and letting the user know
         if (MockDatabase.LibraryItems.Count == 0)
@@ -93,18 +93,4 @@ internal class BooksController : IBaseController
         Console.ReadKey();
     }
 
-    public void ViewItems()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void AddItem()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void DeleteItem()
-    {
-        throw new NotImplementedException();
-    }
 }

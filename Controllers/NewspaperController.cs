@@ -1,9 +1,7 @@
 ﻿using Spectre.Console;
-using TCSA.OOP.LibraryManagementSystem;
-using TCSA.OOP.LibraryManagementSystem.Controllers;
 using TCSA.OOP.LibraryManagementSystem.Models;
 
-namespace TCSA.OOP.LibraryManagement.Controllers;
+namespace TCSA.OOP.LibraryManagementSystem.Controllers;
 
 internal class NewspaperController : IBaseController
 {
