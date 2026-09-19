@@ -2,12 +2,13 @@
 
 using Spectre.Console;
 using System;
+using TCSA.OOP.LibraryManagementSystem.Controllers;
 using TCSA.OOP.LibraryManagementSystem.Models;
 
-internal class BooksController
+internal class BooksController : IBaseController
 {
 
-    internal void ViewBooks()
+    public void ViewBooks()
     {
         var table = new Table();
         table.Border(TableBorder.Rounded);
@@ -38,7 +39,7 @@ internal class BooksController
             Console.ReadKey();
     }
 
-    internal void AddBook()
+    public void AddBook()
     {
         var title = AnsiConsole.Ask<string>("Enter the [green]title[/] of the book to add:");
         var author = AnsiConsole.Ask<string>("Enter the [green]author[/] of the book:");
@@ -62,7 +63,7 @@ internal class BooksController
         Console.ReadKey();
     }
 
-    internal void DeleteBook()
+    public void DeleteBook()
     {
         // checking if there are any books to delete and letting the user know
         if (MockDatabase.LibraryItems.Count == 0)
@@ -91,5 +92,20 @@ internal class BooksController
 
         AnsiConsole.MarkupLine("Press Any Key to Continue.");
         Console.ReadKey();
+    }
+
+    public void ViewItems()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void AddItem()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void DeleteItem()
+    {
+        throw new NotImplementedException();
     }
 }
